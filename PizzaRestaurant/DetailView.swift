@@ -36,7 +36,8 @@ struct DetailView: View {
                     Text("Edit")
                 })
                 .sheet(isPresented: $showOrderEdit) {
-                    OrderEdit(order: order)
+                    DetailEdit(order: order)
+                    
                 }
             }
         }

@@ -17,7 +17,7 @@
 		45673E5925208959003AF2BE /* Order+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45673E5725208959003AF2BE /* Order+CoreDataProperties.swift */; };
 		45673E7E25208DDC003AF2BE /* OrderSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45673E7D25208DDC003AF2BE /* OrderSheet.swift */; };
 		F77D9F802575101300C4C89D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D9F7F2575101300C4C89D /* DetailView.swift */; };
-		F77D9F83257511F400C4C89D /* OrderEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D9F82257511F400C4C89D /* OrderEdit.swift */; };
+		F77D9F83257511F400C4C89D /* DetailEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77D9F82257511F400C4C89D /* DetailEdit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		45673E5725208959003AF2BE /* Order+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		45673E7D25208DDC003AF2BE /* OrderSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSheet.swift; sourceTree = "<group>"; };
 		F77D9F7F2575101300C4C89D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		F77D9F82257511F400C4C89D /* OrderEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderEdit.swift; sourceTree = "<group>"; };
+		F77D9F82257511F400C4C89D /* DetailEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEdit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 				45520471251E58FD00C40EAD /* PizzaRestaurantApp.swift */,
 				45520473251E58FD00C40EAD /* ContentView.swift */,
 				F77D9F7F2575101300C4C89D /* DetailView.swift */,
-				F77D9F82257511F400C4C89D /* OrderEdit.swift */,
+				F77D9F82257511F400C4C89D /* DetailEdit.swift */,
 				45673E7D25208DDC003AF2BE /* OrderSheet.swift */,
 				45520475251E590000C40EAD /* Assets.xcassets */,
 				4552047A251E590000C40EAD /* Persistence.swift */,
@@ -164,7 +164,7 @@
 				4552047B251E590000C40EAD /* Persistence.swift in Sources */,
 				45520474251E58FD00C40EAD /* ContentView.swift in Sources */,
 				45520472251E58FD00C40EAD /* PizzaRestaurantApp.swift in Sources */,
-				F77D9F83257511F400C4C89D /* OrderEdit.swift in Sources */,
+				F77D9F83257511F400C4C89D /* DetailEdit.swift in Sources */,
 				45673E5825208959003AF2BE /* Order+CoreDataClass.swift in Sources */,
 				45673E7E25208DDC003AF2BE /* OrderSheet.swift in Sources */,
 				4552047E251E590000C40EAD /* PizzaRestaurant.xcdatamodeld in Sources */,
