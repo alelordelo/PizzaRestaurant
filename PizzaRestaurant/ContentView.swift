@@ -61,13 +61,7 @@ struct ContentView: View {
         }
     }
     
-    func updateOrder(order: Order) {
-        let newStatus = order.orderStatus == .pending ? Status.preparing : .completed
-        viewContext.performAndWait {
-            order.orderStatus = newStatus
-            try? viewContext.save()
-        }
-    }
+
 }
 
 struct ContentView_Previews: PreviewProvider {

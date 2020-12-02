@@ -9,7 +9,9 @@ import SwiftUI
 
 struct DetailView: View {
     
-    var order = Order()
+    @ObservedObject var order: Order   // << here !!
+
+    
     
     @State var showOrderEdit = false
 
@@ -37,6 +39,8 @@ struct DetailView: View {
                 })
                 .sheet(isPresented: $showOrderEdit) {
                     DetailEdit(order: order)
+
+
                     
                 }
             }
@@ -45,8 +49,8 @@ struct DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView()
-    }
-}
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailView()
+//    }
+//}

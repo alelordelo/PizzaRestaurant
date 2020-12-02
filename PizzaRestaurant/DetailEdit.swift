@@ -13,8 +13,10 @@ struct DetailEdit: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment (\.presentationMode) var presentationMode
-
-    var order = Order()
+    
+    @ObservedObject var order: Order
+    
+   // var order = Order()
 
     var body: some View {
         
@@ -56,9 +58,9 @@ struct DetailEdit: View {
     
   
     
-struct OrderEdit_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailEdit()
-    }
- }
+//struct OrderEdit_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailEdit()
+//    }
+// }
 }
