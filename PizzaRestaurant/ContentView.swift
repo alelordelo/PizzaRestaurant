@@ -27,6 +27,8 @@ struct ContentView: View {
                         NavigationLink(destination: DetailView(order: order)) {
 
                         VStack(alignment: .leading) {
+                            
+                            Text(order.flavor)
                             Text("\(order.pizzaType) - \(order.numberOfSlices) slices")
                                 .font(.headline)
                             Text("Table \(order.tableNumber)")

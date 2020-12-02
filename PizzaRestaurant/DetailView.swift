@@ -19,7 +19,8 @@ struct DetailView: View {
     var body: some View {
         
         Form{
-        
+        Text(order.flavor)
+
         Text(order.tableNumber)
         Text(order.pizzaType)
             

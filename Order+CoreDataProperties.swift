@@ -22,6 +22,10 @@ extension Order {
     @NSManaged public var status: String
     @NSManaged public var tableNumber: String
     
+    @NSManaged public var flavor: String
+
+    
+    
     var orderStatus: Status {
         set {
             status = newValue.rawValue

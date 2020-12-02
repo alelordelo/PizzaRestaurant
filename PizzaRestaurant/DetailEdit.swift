@@ -9,14 +9,24 @@ import SwiftUI
 
 struct DetailEdit: View {
     
+
+    
+
+    let pizzaTypes = ["Pizza Margherita", "Greek Pizza", "Pizza Supreme", "Pizza California", "New York Pizza"]
+
+    
     @State var tableNumber = ""
+    
+    @State var selectedPizzaIndex = 1
+    @State var numberOfSlices = 1
     
     @Environment(\.managedObjectContext) private var viewContext
     @Environment (\.presentationMode) var presentationMode
     
+   
+    
     @ObservedObject var order: Order
     
-   // var order = Order()
 
     var body: some View {
         
@@ -26,6 +36,12 @@ struct DetailEdit: View {
         Form {
         
             TextField("table number", text: $tableNumber)
+            
+            Picker(selection: $selectedPizzaIndex, label: Text("Pizza Type")) {
+                ForEach(0 ..< pizzaTypes.count) {
+                        Text(self.pizzaTypes[$0]).tag($0)
+                }
+            }
             
             
             //update button
@@ -41,6 +57,10 @@ struct DetailEdit: View {
         //passing data item detail -> item edit
         .onAppear {
             self.tableNumber = self.order.tableNumber
+            
+            
+           // newOrder.flavor = self.selectedFlavor.rawValue
+
         }
         
         .navigationTitle("Edit Order")

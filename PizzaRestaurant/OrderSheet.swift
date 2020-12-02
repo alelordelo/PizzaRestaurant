@@ -15,6 +15,16 @@ struct OrderSheet: View {
     
     @Environment (\.presentationMode) var presentationMode
     
+    enum Flavor: String, CaseIterable, Identifiable {
+        case chocolate
+        case vanilla
+        case strawberry
+
+        var id: String { self.rawValue }
+    }
+    
+    @State private var selectedFlavor = Flavor.chocolate
+
     @State var selectedPizzaIndex = 1
     @State var numberOfSlices = 1
     @State var tableNumber = ""
@@ -22,6 +32,15 @@ struct OrderSheet: View {
     var body: some View {
         NavigationView {
             Form {
+                
+
+                Picker("Flavor", selection: $selectedFlavor) {
+                    Text("Chocolate").tag(Flavor.chocolate)
+                    Text("Vanilla").tag(Flavor.vanilla)
+                    Text("Strawberry").tag(Flavor.strawberry)
+                }
+                Text("Selected flavor: \(selectedFlavor.rawValue)")
+                
                 Section(header: Text("Pizza Details")) {
                     Picker(selection: $selectedPizzaIndex, label: Text("Pizza Type")) {
                         ForEach(0 ..< pizzaTypes.count) {
@@ -42,6 +61,9 @@ struct OrderSheet: View {
                     guard self.tableNumber != "" else {return}
                     let newOrder = Order(context: viewContext)
                     newOrder.pizzaType = self.pizzaTypes[self.selectedPizzaIndex]
+                    
+                    newOrder.flavor = self.selectedFlavor.rawValue
+                    
                     newOrder.orderStatus = .pending
                     newOrder.tableNumber = self.tableNumber
                     newOrder.numberOfSlices = Int16(self.numberOfSlices)
