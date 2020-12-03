@@ -72,17 +72,12 @@ struct DetailEdit: View {
         }
         
         //fetch data from core data  -> item edit
+        .onChange(of: selectedFlavor) {
+           self.order.flavor = $0.rawValue
+        }
         .onAppear {
-            
-            self.tableNumber = self.order.tableNumber
-           // self.selectedPizzaIndex = self.order.pizzaTypes
-            
-           // self.selectedFlavor.rawValue = self.order.flavor
-            
-           self.selectedFlavor = self.order.flavor
-            
-           // newOrder.flavor = self.selectedFlavor.rawValue
-
+           self.tableNumber = self.order.tableNumber
+            self.selectedFlavor = Flavor(rawValue: self.order.flavor)!
         }
         
         .navigationTitle("Edit Order")
