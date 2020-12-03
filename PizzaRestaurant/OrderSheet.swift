@@ -64,10 +64,14 @@ struct OrderSheet: View {
                     
                     newOrder.flavor = self.selectedFlavor.rawValue
                     
+                    
+                    
                     newOrder.orderStatus = .pending
                     newOrder.tableNumber = self.tableNumber
                     newOrder.numberOfSlices = Int16(self.numberOfSlices)
                     newOrder.id = UUID()
+                    
+                    
                     do {
                         try viewContext.save()
                         print("Order saved.")

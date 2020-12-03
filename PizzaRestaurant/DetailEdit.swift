@@ -20,12 +20,21 @@ struct DetailEdit: View {
     @State var selectedPizzaIndex = 1
     @State var numberOfSlices = 1
     
+    @ObservedObject var order: Order
+
     @Environment(\.managedObjectContext) private var viewContext
     @Environment (\.presentationMode) var presentationMode
     
    
+    @State  var selectedFlavor = Flavor.chocolate
     
-    @ObservedObject var order: Order
+    enum Flavor: String, CaseIterable, Identifiable {
+        case chocolate
+        case vanilla
+        case strawberry
+
+        var id: String { self.rawValue }
+    }
     
 
     var body: some View {
@@ -34,7 +43,15 @@ struct DetailEdit: View {
 
         
         Form {
-        
+            
+            Picker("Flavor", selection: $selectedFlavor) {
+                Text("Chocolate").tag(Flavor.chocolate)
+                Text("Vanilla").tag(Flavor.vanilla)
+                Text("Strawberry").tag(Flavor.strawberry)
+            }
+            Text("Selected flavor: \(selectedFlavor.rawValue)")
+            
+
             TextField("table number", text: $tableNumber)
             
             Picker(selection: $selectedPizzaIndex, label: Text("Pizza Type")) {
@@ -54,10 +71,15 @@ struct DetailEdit: View {
         
         }
         
-        //passing data item detail -> item edit
+        //fetch data from core data  -> item edit
         .onAppear {
-            self.tableNumber = self.order.tableNumber
             
+            self.tableNumber = self.order.tableNumber
+           // self.selectedPizzaIndex = self.order.pizzaTypes
+            
+           // self.selectedFlavor.rawValue = self.order.flavor
+            
+           self.selectedFlavor = self.order.flavor
             
            // newOrder.flavor = self.selectedFlavor.rawValue
 
@@ -69,9 +91,17 @@ struct DetailEdit: View {
 }
     
     func updateOrder(order: Order) {
+        
         let newtableNumber = tableNumber
+
+        
         viewContext.performAndWait {
-            order.tableNumber = newtableNumber
+            
+        order.tableNumber = newtableNumber
+        order.flavor = selectedFlavor.rawValue
+            
+           // order.flavor =
+            
             try? viewContext.save()
         }
     }

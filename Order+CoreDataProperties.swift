@@ -21,7 +21,6 @@ extension Order {
     @NSManaged public var pizzaType: String
     @NSManaged public var status: String
     @NSManaged public var tableNumber: String
-    
     @NSManaged public var flavor: String
 
     
@@ -34,6 +33,7 @@ extension Order {
             Status(rawValue: status) ?? .pending
         }
     }
+    
 
 }
 
