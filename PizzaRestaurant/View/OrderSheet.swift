@@ -9,7 +9,10 @@ import SwiftUI
 
 struct OrderSheet: View {
        
-    let pizzaTypes = ["Pizza Margherita", "Greek Pizza", "Pizza Supreme", "Pizza California", "New York Pizza"]
+   // let pizzaTypes = ["Pizza Margherita", "Greek Pizza", "Pizza Supreme", "Pizza California", "New York Pizza"]
+    
+    @ObservedObject private var orderSheetViewModel = OrderSheetViewModel()
+
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -43,8 +46,8 @@ struct OrderSheet: View {
                 
                 Section(header: Text("Pizza Details")) {
                     Picker(selection: $selectedPizzaIndex, label: Text("Pizza Type")) {
-                        ForEach(0 ..< pizzaTypes.count) {
-                                Text(self.pizzaTypes[$0]).tag($0)
+                        ForEach(0 ..< orderSheetViewModel.pizzaTypes.count) {
+                            Text(self.orderSheetViewModel.pizzaTypes[$0]).tag($0)
                         }
                     }
                     
@@ -60,7 +63,7 @@ struct OrderSheet: View {
                 Button(action: {
                     guard self.tableNumber != "" else {return}
                     let newOrder = Order(context: viewContext)
-                    newOrder.pizzaType = self.pizzaTypes[self.selectedPizzaIndex]
+                    newOrder.pizzaType = self.orderSheetViewModel.pizzaTypes[self.selectedPizzaIndex]
                     
                     newOrder.flavor = self.selectedFlavor.rawValue
                     

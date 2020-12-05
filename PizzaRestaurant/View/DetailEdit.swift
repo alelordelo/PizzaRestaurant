@@ -71,13 +71,19 @@ struct DetailEdit: View {
         
         }
         
-        //fetch data from core data  -> item edit
-        .onChange(of: selectedFlavor) {
-           self.order.flavor = $0.rawValue
-        }
+    
+        
+        //fetch cofe data -> item edit
         .onAppear {
            self.tableNumber = self.order.tableNumber
             self.selectedFlavor = Flavor(rawValue: self.order.flavor)!
+          //  self.selectedPizzaIndex = self.order.pizzaTypes.rawValue
+
+        }
+        
+        //update data from picker  -> item edit
+        .onChange(of: selectedFlavor) {
+           self.order.flavor = $0.rawValue
         }
         
         .navigationTitle("Edit Order")
