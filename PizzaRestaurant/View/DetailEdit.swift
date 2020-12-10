@@ -10,23 +10,17 @@ import SwiftUI
 struct DetailEdit: View {
     
 
-    
-
-    let pizzaTypes = ["Pizza Margherita", "Greek Pizza", "Pizza Supreme", "Pizza California", "New York Pizza"]
-
-    
-    @State var tableNumber = ""
-    
-    @State var selectedPizzaIndex = 1
-    @State var numberOfSlices = 1
+    //BB: VALUES GETTING DERIVED FROM DETAIL VIEW
+    let pizzaTypes: [String]
+    @State var tableNumber: String
+    @State var selectedPizzaIndex: Int
+    @State var numberOfSlices: Int
+    @State var selectedFlavor: Flavor
     
     @ObservedObject var order: Order
-
+    
     @Environment(\.managedObjectContext) private var viewContext
     @Environment (\.presentationMode) var presentationMode
-    
-   
-    @State  var selectedFlavor = Flavor.chocolate
     
     enum Flavor: String, CaseIterable, Identifiable {
         case chocolate
@@ -70,27 +64,14 @@ struct DetailEdit: View {
             }
         
         }
-        
-    
-        
-        //fetch cofe data -> item edit
-        .onAppear {
-           self.tableNumber = self.order.tableNumber
-            self.selectedFlavor = Flavor(rawValue: self.order.flavor)!
-          //  self.selectedPizzaIndex = self.order.pizzaTypes.rawValue
 
-        }
-        
-        //update data from picker  -> item edit
-        .onChange(of: selectedFlavor) {
-           self.order.flavor = $0.rawValue
-        }
         
         .navigationTitle("Edit Order")
 
     }
 }
     
+    //BB: NEEDS TO BE COMPLETED
     func updateOrder(order: Order) {
         
         let newtableNumber = tableNumber
