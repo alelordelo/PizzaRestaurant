@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DetailView: View {
     
+    let pizzaTypes = ["Pizza Margherita", "Greek Pizza", "Pizza Supreme", "Pizza California", "New York Pizza"]
+    
     @ObservedObject var order: Order   // << here !!
 
     
@@ -39,10 +41,9 @@ struct DetailView: View {
                     Text("Edit")
                 })
                 .sheet(isPresented: $showOrderEdit) {
-                    DetailEdit(order: order)
-
-
                     
+                    //BB: Using the CoreData order instance to pass it down to the DetailEdit
+                    DetailEdit(pizzaTypes: pizzaTypes, tableNumber: order.tableNumber, selectedPizzaIndex: pizzaTypes.firstIndex(of: order.pizzaType) ?? 00, numberOfSlices: Int(order.numberOfSlices), selectedFlavor: DetailEdit.Flavor(rawValue: order.flavor) ?? .chocolate, order: order)
                 }
             }
         }
